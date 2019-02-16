@@ -6,7 +6,7 @@
       $password = $_POST['password'];
       $usersInDb = $model->selectAllUsers();
       foreach ($usersInDb as $user ) {
-        if ($email == $user['email']) {
+        if ($email != $user['email']) {
          echo $user['email'];
          die();
         }
