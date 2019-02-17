@@ -6,37 +6,26 @@
       $password = $_POST['password'];
       $usersInDb = $model->selectAllUsers();
       foreach ($usersInDb as $user ) {
-        if ($email != $user['email']) {
-         echo $user['email'];
-         die();
+        if ($email == $user['email']) {
+        $err['email'] = 'Email da ton tai';
+         
+        }
+        if (empty($email)) {
+        $err['email'] = 'Email khong duoc de trong';	
         }
         else {
-          echo 'ok';
-          die();
+        	$pattern = '/^[a-zA-Z0-9]{3,16}[\S]$/';
+            if ( !empty($password) && preg_match($pattern, $password) == true) {
+          	$password = sha1($password);
+          	$addAcc = $model->addAccount($username,$password,$email);
+          	header('Location:../view/register-success.php');
+          	}
+          	else{
+          		$err['password'] = "Mat khau khong duoc de trong !!! Mat khau phai tu 3-16 ky tu, khong duoc chua dau cach, phai co it nhat 1 chu in Hoa va 1 so !!!";
+          	}
         }
 
       }
-      // $pattern = '/^[a-zA-Z0-9]{3,16}[\S]$/';
-      // if (preg_match($pattern, $password)) {
-      //   $addAcc = $model->addAccount($username,$password,$email);
-      //   header('Location:../view/register-success.php');
-      // }
-      // else {
-      //   echo 'loi roi';
-      // }
-
-
-
-
-      
-      // if ($addAcc == true) {
-      //   header('Location:../view/login.php');
-      // }
-      // else {
-      //   echo 'loi';
-      // }
-
-
   }
  ?>
 <!DOCTYPE html>
@@ -79,16 +68,19 @@
 
     <form action="../controller/controller.php" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Username" name="username">
+        <input type="text" class="form-control" placeholder="Username" name="username" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="Email" name="email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <span class="err"><?php echo isset($err['email'])? $err['email'] :'';?></span>
       </div>
       <div class="form-group has-feedback">
         <input type="password" class="form-control" placeholder="Password" name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <span class="err"><?php echo isset($err['password'])? $err['password'] :'';?></span>
+
       </div>
       
       <div class="row">
@@ -115,7 +107,9 @@
         Google+</a>
     </div> -->
 
-    <a href="../view/login.php" class="text-center">I already have a membership</a>
+    <form action="../controller/controller.php" method="post">
+    	<button name="login" class="btn">I already have a membership</button>
+    </form>
   </div>
   <!-- /.form-box -->
 </div>

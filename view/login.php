@@ -2,8 +2,16 @@
   $model = new model();
   if (isset($_POST['login-btn'])) {
     $email = $_POST['email'];
-    $password = $_POST['password'];
-    $email;
+    $password = sha1($_POST['password']);
+    $usersInDb = $model->selectAllUsers();
+    foreach ($usersInDb as $users) {
+        if ($email == $users['email'] && $password == $users['password']) {
+            header('Location:../index.php');
+        }
+        else {
+          echo 'loi dang nhap';
+        }
+    }
   }
 
 ?>
@@ -45,7 +53,7 @@
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="../../index2.html" method="post">
+    <form action="../controller/controller.php" method="post">
       <div class="form-group has-feedback">
         <input type="email" name="email" class="form-control" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
