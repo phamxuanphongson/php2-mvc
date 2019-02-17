@@ -21,6 +21,9 @@
     if ($boolean == true) {
       foreach ($usersInDb as $users) {
         if ($email == $users['email'] && $password == $users['password']) {
+            session_start();
+            $_SESSION['auth'] = ['email' => $email, 'password' => $password];
+            ;
             header('Location:../view/admin-home.php');
         }
         else {
