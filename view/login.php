@@ -1,6 +1,7 @@
 <?php 
-  $model = new model();
+  
   if (isset($_POST['login-btn'])) {
+    $model = new model();
     $email = $_POST['email'];
     $password = $_POST['password'];
     $usersInDb = $model->selectAllUsers();
@@ -99,9 +100,10 @@
     <!-- /.social-auth-links -->
 
     <a href="#">I forgot my password</a><br>
-    <form action="../controller/controller.php" method="post">
+    <a href="register.php" title="">Register a new membership </a>
+    <!-- <form action="../controller/controller.php" method="post">
       <input type="submit" name="register" class="btn" value="Register a new membership">
-    </form>
+    </form> -->
 
   </div>
   <!-- /.login-box-body -->

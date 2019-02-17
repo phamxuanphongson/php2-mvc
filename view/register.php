@@ -1,33 +1,51 @@
-<?php 
-  $model = new model();
+<?php
+  include_once '../model/model.php';
   if (isset($_POST['register-btn'])) {
+      $model = new model();
       $username = $_POST['username'];
       $email = $_POST['email'];
       $password = $_POST['password'];
+      $pattern = '/^[a-zA-Z0-9]{3,16}[\S]$/';
+      $boolean = true;
       $usersInDb = $model->selectAllUsers();
+      
       foreach ($usersInDb as $user ) {
-        if ($email == $user['email']) {
-        $err['email'] = 'Email da ton tai';
-         
-        }
         if (empty($email)) {
-        $err['email'] = 'Email khong duoc de trong';	
+          $err['email'] = 'Email khong duoc de trong';
+          $boolean = false;
+        }
+        if ($email == $user['email']) {
+          $err['email'] = 'Email da bi trung';
+          $boolean = false;
+        }
+        if (empty($password)) {
+          $err['password'] = 'Mat khau khong duoc de trong';
+          $boolean = false;
+        }  
+        
+        if (preg_match($pattern, $password) != 1) {
+          $err['password'] = "Mat khau phai tu 3-16 ky tu, khong duoc chua dau cach, phai co it nhat 1 chu in Hoa va 1 so !!!";
+          $boolean = false;
         }
         else {
-        	  $pattern = '/^[a-zA-Z0-9]{3,16}[\S]$/';
-            if ( !empty($password) && preg_match($pattern, $password) == true) {
-          	$password = sha1($password);
-          	$addAcc = $model->addAccount($username,$password,$email);
-          	header('Location:../view/register-success.php');
-          	}
-          	else{
-          		$err['password'] = "Mat khau khong duoc de trong !!! Mat khau phai tu 3-16 ky tu, khong duoc chua dau cach, phai co it nhat 1 chu in Hoa va 1 so !!!";
-          	}
+          $password = sha1($password);
         }
-
+        if ($boolean == false) {
+          include_once '../view/register.php';
+        }
+        else {
+          $addAcc = $model->addAccount($username,$password,$email);
+          header('Location:../view/register-success.php');
+        }
+        
+      
       }
+      
   }
- ?>
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +84,7 @@
   <div class="register-box-body">
     <p class="login-box-msg">Register a new membership</p>
 
-    <form action="../controller/controller.php" method="post">
+    <form action="" method="post">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Username" name="username" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -107,9 +125,10 @@
         Google+</a>
     </div> -->
 
-    <form action="../controller/controller.php" method="post">
+    <!-- <form action="../view/login.php" method="post">
     	<button name="login" class="btn">I already have a membership</button>
-    </form>
+    </form> -->
+    <a href="../view/login.php" title="">I already have a membership</a>
   </div>
   <!-- /.form-box -->
 </div>
