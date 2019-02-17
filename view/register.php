@@ -14,7 +14,7 @@
         $err['email'] = 'Email khong duoc de trong';	
         }
         else {
-        	$pattern = '/^[a-zA-Z0-9]{3,16}[\S]$/';
+        	  $pattern = '/^[a-zA-Z0-9]{3,16}[\S]$/';
             if ( !empty($password) && preg_match($pattern, $password) == true) {
           	$password = sha1($password);
           	$addAcc = $model->addAccount($username,$password,$email);

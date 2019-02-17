@@ -2,11 +2,22 @@
   $model = new model();
   if (isset($_POST['login-btn'])) {
     $email = $_POST['email'];
-    $password = sha1($_POST['password']);
+    $password = $_POST['password'];
     $usersInDb = $model->selectAllUsers();
+    if (empty($email)) {
+      $err['email'] = 'Email khong duoc de trong';
+    }
+    $pattern = '/^[a-zA-Z0-9]{3,16}[\S]$/';
+    if ( !empty($password) && preg_match($pattern, $password) == true) {
+    $password = sha1($password);
+    }
+    else {
+      $err['password'] = "Mat khau khong duoc de trong !!! Mat khau phai tu 3-16 ky tu, khong duoc chua dau cach, phai co it nhat 1 chu in Hoa va 1 so !!!";
+    }
+
     foreach ($usersInDb as $users) {
         if ($email == $users['email'] && $password == $users['password']) {
-            header('Location:../index.php');
+            header('Location:../view/admin-home.php');
         }
         else {
           echo 'loi dang nhap';
