@@ -18,11 +18,14 @@
 			elseif (isset($_POST['login']) || isset($_POST['login-btn']) ) {
 				include_once '../view/login.php';
 			}
-			elseif (isset($_POST['register']) || isset($_POST['register-btn']) ) {
+
+			elseif (isset($_POST['register-btn']) ) {
 				
-		        include_once '../view/register.php';
-		        
-		      
+		        include_once '../view/register.php';   
+			}
+			
+			elseif(isset($_GET['register'])){
+				include_once '../view/register.php';
 			}
 			else{
 				include_once '../view/home.php';
