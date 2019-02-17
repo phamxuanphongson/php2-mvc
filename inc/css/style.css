@@ -324,50 +324,7 @@ RESPONSIVE
  .nav-btns {
      float:right;
 }
- .nav-btns > button {
-     padding: 25px 25px;
-     border: none;
-     line-height: 20px;
-     background: transparent;
-}
- .nav-btns .search-form {
-     position: absolute;
-     left: 0;
-     right: 0;
-     top: 0;
-     bottom: 0px;
-     padding: 0px 15px;
-     opacity: 0;
-     visibility: hidden;
-     -webkit-transition: 0.3s all;
-     transition: 0.3s all;
-}
- .nav-btns .search-form.active {
-     opacity: 1;
-     visibility: visible;
-}
- .nav-btns .search-form .search-input {
-     height: 100%;
-     width: 100%;
-     border: none;
-     background: #FFF;
-     padding: 0px;
-     font-weight: 600;
-}
- .nav-btns .search-form .search-close {
-     position: absolute;
-     top: 50%;
-     right: 15px;
-     -webkit-transform: translateY(-50%);
-     -ms-transform: translateY(-50%);
-     transform: translateY(-50%);
-     border: none;
-     background: transparent;
-     line-height: 20px;
-     color: #212631;
-     font-size: 22px;
-     padding: 0;
-}
+/*/
 /*----------------------------*\
 	nav aside
 \*----------------------------*/
