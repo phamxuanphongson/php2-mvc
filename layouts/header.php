@@ -57,14 +57,14 @@
 						</ul>
 						<!-- /nav -->
 						
-						<!-- <form action="../view/login.php" class="navbar-form navbar-right" method="post">
-							<button name="login" type="submit" class="btn btn-default navbar-btn" name="login"><i class="fa fa-user"></i></button>
+						<form action="../view/login.php" class="navbar-form navbar-right" method="post">
+							<a href="../view/login.php" class="btn" title=""><i class="fa fa-user"></i></a>
 							<button name="btn-search" type="submit" class="btn btn-default navbar-btn"><i class="fa fa-search"></i></button>
 							<div class="form-group">
 								<input class="form-control" type="text" name="search" placeholder="Enter Your Search ...">
 							</div>
-						</form> -->
-						<a href="../view/login.php" class="btn" title=""><i class="fa fa-user"></i></a>
+						</form>
+						
 
 						<!-- search & aside toggle -->
 						

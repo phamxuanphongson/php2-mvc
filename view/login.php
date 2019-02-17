@@ -5,25 +5,32 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
     $usersInDb = $model->selectAllUsers();
+    $boolean = true;
     if (empty($email)) {
       $err['email'] = 'Email khong duoc de trong';
+      $boolean = false;
     }
     $pattern = '/^[a-zA-Z0-9]{3,16}[\S]$/';
     if ( !empty($password) && preg_match($pattern, $password) == true) {
-    $password = sha1($password);
+      $password = sha1($password);
     }
     else {
       $err['password'] = "Mat khau khong duoc de trong !!! Mat khau phai tu 3-16 ky tu, khong duoc chua dau cach, phai co it nhat 1 chu in Hoa va 1 so !!!";
+      $boolean = false;
     }
-
-    foreach ($usersInDb as $users) {
+    if ($boolean == true) {
+      foreach ($usersInDb as $users) {
         if ($email == $users['email'] && $password == $users['password']) {
             header('Location:../view/admin-home.php');
         }
         else {
-          echo 'loi dang nhap';
+          $err['email'] = 'Email khong ton tai !!!';
+          $err['password'] = 'Sai Mat Khau';
+          $boolean = false;
         }
+      }
     }
+    
   }
 
 ?>
@@ -69,10 +76,12 @@
       <div class="form-group has-feedback">
         <input type="email" name="email" class="form-control" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <span class="err"><?php echo isset($err['email'])? $err['email'] :'';?></span>
       </div>
       <div class="form-group has-feedback">
         <input type="password" name="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <span class="err"><?php echo isset($err['password'])? $err['password'] :'';?></span>
       </div>
       <div class="row">
         <div class="col-xs-8">
