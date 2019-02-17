@@ -56,6 +56,7 @@ class model extends database{
 		$sql = "insert into users values (NULL,N'$username',N'$password',N'$email')";
 		return parent::queryExecSQL($sql);
 	}
+
 }
 
  ?>

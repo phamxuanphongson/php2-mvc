@@ -1,4 +1,15 @@
 <?php include_once '../layouts/admin/header.php'; ?>
+
+<?php include_once '../model/model.php'; ?>
+
+<?php 
+  $model = new model();
+
+
+
+
+ ?>
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
