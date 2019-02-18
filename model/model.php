@@ -53,13 +53,14 @@ class model extends database{
 
 	public function addAccount($username,$password,$email)
 	{
-		$sql = "insert into users values (NULL,N'$username',N'$password',N'$email')";
+		$sql = "insert into users value (NULL,N'$username',N'$password',N'$email')";
 		return parent::queryExecSQL($sql);
 	}
 
-	public function addPost($title,$cate_id,$nameImage,$short_desc,$content)
-	{
-		$sql = "insert into posts values (NULL,N'$title',N'$short_desc',N'$content',N'$nameImage,'N'$cate_id')";
+	public function addPost($title,$short_desc,$content,$nameImage,$cate_id)
+	{	
+		
+		$sql = "insert into posts value (NULL,N'$title',N'$short_desc',N'$content',N'$nameImage',N'$cate_id')";
 		return parent::queryExecSQL($sql);
 	}
 

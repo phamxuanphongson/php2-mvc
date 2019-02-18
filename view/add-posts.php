@@ -1,5 +1,5 @@
 
-<?php include_once '../model/model.php'; ?>
+
 <?php 
 
   if (isset($_POST['save-btn'])) {
@@ -30,11 +30,19 @@
       }
 
       if ($bl == true) {
-
+        include_once '../model/model.php';
         $nameImage = $model->uploadImage($image);
-        var_dump($nameImage);
-        $doAddPost = $model->addPost($title,$cate_id,$nameImage,$short_desc,$content);
-        // header('Location:../view/admin-home-posts-index.php');
+        // var_dump($nameImage);
+        $doAddPost = $model->addPost($title,$short_desc,$content,$nameImage,$cate_id);
+        
+        if ($doAddPost == true) {
+          header('Location:../view/admin-home-posts-index.php');
+        }
+        else {
+          echo 'loi';
+          die();
+        }  
+      
       }
       else {
         include_once '../view/add-posts.php';
@@ -78,6 +86,7 @@
                     <label>Danh mục</label>
                     <select name="cate_id" class="form-control">
                       <?php
+                        include_once '../model/model.php';
                         $model = new model(); 
                         $allCates = $model->selectAllCates();
                         $allPosts = $model->selectAllPosts();
