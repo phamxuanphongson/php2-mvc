@@ -21,7 +21,7 @@
 				include_once '../view/login.php';
 			}
 			elseif(isset($_POST['save-btn'])){
-				include_once '..';
+				include_once '../view/add-posts.php';
 			}
 			
 			

@@ -1,8 +1,50 @@
-<?php include_once '../layouts/admin/header.php'; ?>
 
 <?php include_once '../model/model.php'; ?>
+<?php 
 
-<?php  ?>
+  if (isset($_POST['save-btn'])) {
+
+      $model = new model();
+      $title = $_POST['title'];
+      $cate_id = $_POST['cate_id'];
+      $image = $_FILES['image'];
+      $short_desc = $_POST['short_desc'];
+      $content = $_POST['content'];
+      $bl = true;
+      
+
+      if (empty($title)) {
+        $errTitle['title'] =  'Vui long nhap ten tieu de !!';
+        $bl = false;
+      }
+      elseif (empty($short_desc)) {
+        $errSd['short_desc'] = 'Vui long nhap mo ta ngan !!!';
+        $bl = false;
+      }
+      elseif (empty($content)) {
+        $errContent['content'] = 'Vui long nhap noi dung !!!';
+        $bl = false;
+      }
+      elseif (empty($image)) {
+        $bl = false;
+      }
+
+      if ($bl == true) {
+
+        $nameImage = $model->uploadImage($image);
+        var_dump($nameImage);
+        $doAddPost = $model->addPost($title,$cate_id,$nameImage,$short_desc,$content);
+        // header('Location:../view/admin-home-posts-index.php');
+      }
+      else {
+        include_once '../view/add-posts.php';
+      }
+
+  }
+
+  
+?>
+  <?php include_once '../layouts/admin/header.php'; ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

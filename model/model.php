@@ -57,6 +57,12 @@ class model extends database{
 		return parent::queryExecSQL($sql);
 	}
 
+	public function addPost($title,$cate_id,$nameImage,$short_desc,$content)
+	{
+		$sql = "insert into posts values (NULL,N'$title',N'$short_desc',N'$content',N'$nameImage,'N'$cate_id')";
+		return parent::queryExecSQL($sql);
+	}
+
 	public function uploadImage($fileImage)
 	{
 		$fileImageName = $fileImage['name'];
