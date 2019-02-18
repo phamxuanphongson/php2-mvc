@@ -57,6 +57,16 @@ class model extends database{
 		return parent::queryExecSQL($sql);
 	}
 
+	public function uploadImage($fileImage)
+	{
+		$fileImageName = $fileImage['name'];
+		$imageTempName = $fileImage['tmp_name'];
+		$storeAs = '../uploaded/images/';
+		move_uploaded_file($imageTempName, $storeAs.$fileImageName);
+		return $fileImageName;
+	}
+
+
 }
 
  ?>

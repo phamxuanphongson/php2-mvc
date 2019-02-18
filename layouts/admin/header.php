@@ -1,8 +1,15 @@
 <?php session_start(); ?>
-  <?php if (!isset($_SESSION['auth']) || count($_SESSION['auth']) == 0) {
+<?php 
+  if (!isset($_SESSION['auth']) || count($_SESSION['auth']) == 0) {
       header('Location:../view/login.php');
   } 
 ?>
+<?php 
+  if (isset($_POST['signout'])) {
+    session_destroy();
+    header('Location:../view/login.php');
+  }
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -297,7 +304,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="../view/log-out.php"class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>

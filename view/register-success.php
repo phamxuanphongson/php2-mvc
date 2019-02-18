@@ -8,8 +8,6 @@
 </head>
 <body style="text-align: center;">
 	<h1>CHUC MUNG BAN DA DANG KY THANH CONG</h1>
-	<form action="../controller/controller.php" method="post">
-		<button name="login" class="btn">Bam vao day de dang nhap</button>
-	</form>
+	<a href="../view/login.php" title="">Bam vao day de dang nhap</a>
 </body>
 </html>

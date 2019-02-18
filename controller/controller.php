@@ -20,7 +20,9 @@
 			elseif (isset($_POST['login-btn']) ) {
 				include_once '../view/login.php';
 			}
-
+			elseif(isset($_POST['save-btn'])){
+				include_once '..';
+			}
 			
 			
 			elseif(isset($_GET['register'])){
