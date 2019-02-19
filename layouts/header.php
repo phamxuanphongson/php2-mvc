@@ -64,7 +64,7 @@
 						<ul class="nav-menu nav navbar-nav">
 							<?php foreach ($getAllCate as $obj) { ?>
 
-								<li class="cat-<?php echo $obj['id']; ?>"><a href="?categories-<?php echo $obj['id'] ?>"><?php echo $obj['name']; ?></a></li>
+								<li class="cat-<?php echo $obj['id']; ?>"><a href="?categories=<?php echo $obj['id'] ?>"><?php echo $obj['name']; ?></a></li>
 
 							<?php }?>
 						</ul>

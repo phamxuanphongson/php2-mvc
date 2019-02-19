@@ -45,6 +45,11 @@ class model extends database{
 		return parent::queryGetOne($sql);
 	}
 
+	public function getLastRecord()
+	{
+		$sql = "select * from posts ORDER BY id DESC LIMIT 1";
+		return parent::querySelectAll($sql);
+	}
 
 	public function get2LastRecords()
 	{
@@ -93,7 +98,14 @@ class model extends database{
 	public function editPost($title,$short_desc,$content,$nameImage,$cate_id,$id)
 	{	
 		
-		$sql = "update posts set title='$title',short_desc='$short_desc',content='$content',images ='$nameImage',cate_id='$cate_id' where id = '$id'";
+		if ($nameImage == null) {
+			
+			$sql = "update posts set title='$title',short_desc='$short_desc',content='$content',cate_id='$cate_id' where id = '$id'";
+		}
+		else {
+			$sql = "update posts set title='$title',short_desc='$short_desc',content='$content',images ='$nameImage',cate_id='$cate_id' where id = '$id'";
+		}
+		
 		return parent::queryExecSQL($sql);
 	}
 
@@ -125,6 +137,11 @@ class model extends database{
 		return parent::queryExecSQL($sql);
 	}
 
+	public function getAllPostsFromCateId($cate_id)
+	{
+		$sql = "select * from posts where cate_id ='$cate_id' ";
+		return parent::querySelectAll($sql);
+	}
 
 }
 

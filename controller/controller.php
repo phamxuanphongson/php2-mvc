@@ -35,6 +35,11 @@
 			elseif(isset($_GET['register'])){
 				include_once '../view/register.php';
 			}
+			elseif (isset($_GET['categories'])) {
+				$id = $_GET['categories'];
+				include_once '../view/categories.php';
+				
+			}
 			else{
 				include_once '../view/home.php';
 			}

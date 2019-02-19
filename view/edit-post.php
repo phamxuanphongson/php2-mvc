@@ -30,15 +30,19 @@
         $err['content'] = 'Vui long nhap noi dung !!!';
         $bl = false;
       }
-      elseif (empty($image)) {
-        $err['images'] = 'Vui long chon 1 anh !!!';
-        $bl = false;
-      }
+      
 
       if ($bl == true) {
         $model = new model();
         $nameImage = $model->uploadImage($image);
-        $doEditPost = $model->editPost($title,$short_desc,$content,$nameImage,$cate_id,$id);
+        if ($image['name'] == null) {
+          
+          $doEditPost = $model->editPost($title,$short_desc,$content,null,$cate_id,$id);
+        }
+        else{
+          
+          $doEditPost = $model->editPost($title,$short_desc,$content,$nameImage,$cate_id,$id);
+        }
         
         if ($doEditPost == true) {
           header('Location:../view/admin-home-posts-index.php');
