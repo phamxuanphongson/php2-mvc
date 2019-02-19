@@ -65,10 +65,24 @@ class model extends database{
 		return parent::queryExecSQL($sql);
 	}
 
+	public function addCate($name,$color)
+	{	
+		
+		$sql = "insert into categories value (NULL,N'$name',N'$color')";
+		return parent::queryExecSQL($sql);
+	}
+
 	public function editPost($title,$short_desc,$content,$nameImage,$cate_id,$id)
 	{	
 		
 		$sql = "update posts set title='$title',short_desc='$short_desc',content='$content',images ='$nameImage',cate_id='$cate_id' where id = '$id'";
+		return parent::queryExecSQL($sql);
+	}
+
+	public function editCate($name,$color,$id)
+	{	
+		
+		$sql = "update categories set name='$name',color='$color' where id = '$id'";
 		return parent::queryExecSQL($sql);
 	}
 

@@ -26,7 +26,12 @@
 			elseif (isset($_POST['save-editpost-btn'])) {
 				include_once '../view/edit-post.php';
 			}
-			
+			elseif (isset($_POST['save-newcate-btn'])) {
+				include_once '../view/add-categories.php';
+			}
+			elseif (isset($_POST['save-editcate-btn'])) {
+				include_once '../view/edit-categories.php';
+			}
 			elseif(isset($_GET['register'])){
 				include_once '../view/register.php';
 			}
