@@ -1,12 +1,21 @@
+<?php include_once '../model/model.php'; ?>
 <?php 
-      if (isset($_POST['save-btn'])) {
+ if (isset($_GET['id'])){
+    $id = $_GET['id'];
+    $model = new model();
+    $post = $model->getOnePost($id);
+ }
 
-      $model = new model();
+
+  if (isset($_POST['save-editpost-btn'])) {
       $title = $_POST['title'];
       $cate_id = $_POST['cate_id'];
       $image = $_FILES['image'];
       $short_desc = $_POST['short_desc'];
       $content = $_POST['content'];
+      $id = $_POST['id'];
+      var_dump($id);
+      die();
       $bl = true;
       
 
@@ -27,12 +36,11 @@
       }
 
       if ($bl == true) {
-        include_once '../model/model.php';
+        $model = new model();
         $nameImage = $model->uploadImage($image);
-        // var_dump($nameImage);
-        $doAddPost = $model->addPost($title,$short_desc,$content,$nameImage,$cate_id);
+        $doEditPost = $model->editPost($title,$short_desc,$content,$nameImage,$cate_id,$id);
         
-        if ($doAddPost == true) {
+        if ($doEditPost == true) {
           header('Location:../view/admin-home-posts-index.php');
         }
         else {
@@ -47,9 +55,9 @@
 
       }
 
-  
 ?>
-  <?php include_once '../layouts/admin/header.php'; ?>
+
+<?php include_once '../layouts/admin/header.php'; ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -67,12 +75,12 @@
     <section class="content">
     <form enctype="multipart/form-data"action="../controller/controller.php" method="post">
         
-      <!--  <input type="date" name="" value=""> -->
+       <input type="hidden" name="id" value="<?php echo $id ?>">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Title</label>
-                    <input type="text" name="title" class="form-control" value="">
+                    <input type="text" name="title" class="form-control" value="<?php echo $post['title']  ?>">
                    
                     <span class="text-danger"><!-- {{$errors->first('title')}} --></span>
                     
@@ -90,7 +98,9 @@
                        ?>
                        <?php foreach ($allCates as $cate): ?>
                          <option 
-                           
+                           <?php if ($post['cate_id'] == $cate['id']): ?>
+                             selected
+                           <?php endif ?>
                            value="<?php echo $cate['id'] ?>">
                              <?php echo $cate['name'] ?>
                            </option>
@@ -102,7 +112,11 @@
                 
             </div>
             <div class="col-md-6">
-                
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <img id="imageTarget" src="../uploaded/images/<?php echo $post['images'] ?>" class="img-responsive">
+                    </div>
+                </div>
                 <div class="form-group">
                     <label>Image's posts</label>
                     <input type="file" name="image" class="form-control" >
@@ -116,7 +130,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Short_Desc</label>
-                    <textarea class="form-control" name="short_desc" rows="5"></textarea>
+                    <textarea class="form-control" name="short_desc" rows="5"><?php echo $post['short_desc'] ?></textarea>
                     
                         <span class="text-danger"></span>
                    
@@ -127,7 +141,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Content</label>
-                    <textarea id="content" class="form-control" name="content" rows="15"></textarea>
+                    <textarea id="content" class="form-control" name="content" rows="15"><?php echo $post['content'] ?></textarea>
                
                         <span class="text-danger"></span>
                     
@@ -137,7 +151,7 @@
         <div class="text-left">
             <a href="{{ route('list.post') }}"
                 class="btn btn-sm btn-danger">Huỷ</a>
-            <button type="submit" name="save-newpost-btn" class="btn btn-sm btn-primary">Lưu</button>
+            <button type="submit" name="save-editpost-btn" class="btn btn-sm btn-primary">Lưu</button>
         </div>
     </form>
       

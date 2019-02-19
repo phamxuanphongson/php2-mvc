@@ -23,6 +23,7 @@
     <tr>
       <th>ID</th>
       <th>Title</th>
+      <th>Categories</th>
       <th>Short Desc</th>
       <th >Image</th>
       <th ><a href="add-posts.php" class="btn btn-danger btn-sm">Add new posts</a></th>
@@ -33,23 +34,25 @@
     <?php 
       $model = new model();
       $allPosts = $model->selectAllPosts();
-      foreach ($allPosts as $post) { ?>
+      $allCates = $model->selectAllCates();
+    ?>
+    <?php foreach ($allPosts as $post): ?>
+    <?php $theCate = $model->getOneCate($post['cate_id']) ?>
         <tr>
           <th ><?php echo $post['id'] ?></th>
           <td ><?php echo $post['title'] ?></td>
+          
+          <td ><?php echo $theCate['name'] ?></td>
           <td ><?php echo $post['short_desc'] ?></td>
           <td >
-            <img src="" alt="" width="80">
+            <img src="../uploaded/images/<?php echo $post['images'] ?>" alt="" width="80">
           </td>
-          <td><a href="edit-post.php" class="btn btn-dark btn-sm" title="">Edit</a>
-              <a href="{{ route('delete.post', ['id' => $post->id ]) }}" class="btn btn-dark btn-sm" title="">Delete</a>
+          <td><a href="edit-post.php?id=<?php echo $post['id'] ?>" class="btn btn-dark btn-sm" title="">Edit</a>
+              <a href="delete-post.php?id=<?php echo $post['id'] ?>" class="btn btn-dark btn-sm" title="">Delete</a>
           </td>
         </tr>
-
-  <?php    }
-
-
-     ?>
+    <?php endforeach ?>
+  
 
        
     

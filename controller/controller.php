@@ -20,10 +20,12 @@
 			elseif (isset($_POST['login-btn']) ) {
 				include_once '../view/login.php';
 			}
-			elseif(isset($_POST['save-btn'])){
+			elseif(isset($_POST['save-newpost-btn'])){
 				include_once '../view/add-posts.php';
 			}
-			
+			elseif (isset($_POST['save-editpost-btn'])) {
+				include_once '../view/edit-post.php';
+			}
 			
 			elseif(isset($_GET['register'])){
 				include_once '../view/register.php';

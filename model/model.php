@@ -27,6 +27,7 @@ class model extends database{
 		return parent::queryGetOne($sql);
 	}
 
+
 	public function get2LastRecords()
 	{
 		$sql = "select * from posts ORDER BY id DESC LIMIT 2";
@@ -64,6 +65,13 @@ class model extends database{
 		return parent::queryExecSQL($sql);
 	}
 
+	public function editPost($title,$short_desc,$content,$nameImage,$cate_id)
+	{	
+		
+		$sql = "update posts set title ='$title',short_desc ='$short_desc',content ='$content',images = '$nameImage',cate_id ='$cate_id' where id = '$id'";
+		return parent::queryExecSQL($sql);
+	}
+
 	public function uploadImage($fileImage)
 	{
 		$fileImageName = $fileImage['name'];
@@ -71,6 +79,12 @@ class model extends database{
 		$storeAs = '../uploaded/images/';
 		move_uploaded_file($imageTempName, $storeAs.$fileImageName);
 		return $fileImageName;
+	}
+
+	public function deletePost($id)
+	{
+		$sql = "delete from posts where id ='$id' ";
+		return parent::queryExecSQL($sql);
 	}
 
 
