@@ -4,7 +4,9 @@
 
 <?php 
   $model = new model();
-  
+  $countPosts = $model->countAllPosts();
+  $countCates = $model->countAllCates();
+  $countUsers = $model->countAllUsers();
 
 
  ?>
@@ -30,8 +32,8 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>Posts</h3>
-
+              <h3><?php echo $countPosts ?></h3>
+              <p>Posts</p>
               
             </div>
             <div class="icon">
@@ -45,7 +47,8 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>Categories</h3>
+              <h3><?php echo $countCates ?></h3>
+              <p>Categories</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -58,7 +61,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3><?php echo $countUsers ?></h3>
 
               <p>User Registrations</p>
             </div>

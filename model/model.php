@@ -21,6 +21,24 @@ class model extends database{
 		return parent::querySelectAll($sql);
 	}
 
+	public function countAllPosts()
+	{
+		$sql = "select * from posts";
+		return parent::querySelectAll($sql)->rowcount();
+	}
+
+	public function countAllCates()
+	{
+		$sql = "select * from categories";
+		return parent::querySelectAll($sql)->rowcount();
+	}
+
+	public function countAllUsers()
+	{
+		$sql = "select * from users";
+		return parent::querySelectAll($sql)->rowcount();
+	}
+
 	public function getOnePost($id)
 	{
 		$sql = "select * from posts where id ='$id' ";
@@ -98,6 +116,12 @@ class model extends database{
 	public function deletePost($id)
 	{
 		$sql = "delete from posts where id ='$id' ";
+		return parent::queryExecSQL($sql);
+	}
+
+	public function deleteCate($id)
+	{
+		$sql = "delete from categories where id ='$id' ";
 		return parent::queryExecSQL($sql);
 	}
 

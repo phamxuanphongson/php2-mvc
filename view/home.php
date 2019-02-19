@@ -121,7 +121,7 @@
 									<a class="post-category cat-<?php echo $cate['id'] ?>" href="category.html"><?php echo $cate['name'] ?></a>
 									<span class="post-date">March 27, 2018</span>
 								</div>
-								<h3 class="post-title"><a href="blog-post.html"><?php echo $post['title'] ?></a></h3>
+								<h3 class="post-title"><a href="?id=<?php echo $post['id'] ?>"><?php echo $post['title'] ?></a></h3>
 							</div>
 						</div>
 					</div>
