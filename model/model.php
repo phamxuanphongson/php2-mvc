@@ -65,10 +65,10 @@ class model extends database{
 		return parent::queryExecSQL($sql);
 	}
 
-	public function editPost($title,$short_desc,$content,$nameImage,$cate_id)
+	public function editPost($title,$short_desc,$content,$nameImage,$cate_id,$id)
 	{	
 		
-		$sql = "update posts set title ='$title',short_desc ='$short_desc',content ='$content',images = '$nameImage',cate_id ='$cate_id' where id = '$id'";
+		$sql = "update posts set title='$title',short_desc='$short_desc',content='$content',images ='$nameImage',cate_id='$cate_id' where id = '$id'";
 		return parent::queryExecSQL($sql);
 	}
 

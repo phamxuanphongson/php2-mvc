@@ -12,7 +12,7 @@
 				
 				<div class="row">	
 					<?php 
-					foreach ($get2LastPosts as $index => $obj) { ?>
+					foreach ($get2LastPosts as $obj) { ?>
 					<!-- lay tat ca cac categories theo cate_id	 -->
 					<?php $cates = $model->getOneCate($obj['cate_id']); ?>
 					<div class="col-md-6">
@@ -30,11 +30,11 @@
 					</div>
 
 
-					<?php }
+					<?php } ?>
 
 
 
-					?>
+					
 					
 					
 
@@ -53,14 +53,14 @@
 					<?php  
 						foreach ($get20LastPosts as $index => $obj) {
 							// ep title va cate id vao  1 mang, sau do ep tat ca vao 1 mang moi
-							$newArr[] = array($obj['title'],$obj['cate_id']);
+							$newArr[] = array($obj['id'],$obj['title'],$obj['cate_id']);
 						}
 						// lay ra 6 so random
 						$random6Posts = array_rand($newArr,6);
 
 						for ($i=0; $i <6 ; $i++) { ?>
 							<!-- lay ra categories cua 6 random post -->
-							<?php $cates = $model->getOneCate($newArr[$random6Posts[$i]][1]); ?>
+							<?php $cates = $model->getOneCate($newArr[$random6Posts[$i]][2]); ?>
 							<div class="col-md-4">
 								<div class="post">
 									<a class="post-img" href="blog-post.html"><img src="../inc/img/post-3.jpg" alt=""></a>
@@ -69,7 +69,7 @@
 											<a class="post-category cat-<?php echo $cates['id'];?>" href="category.html"><?php echo $cates['name'] ?></a>
 											<span class="post-date">March 27, 2018</span>
 										</div>
-										<h3 class="post-title"><a href="blog-post.html"><?php echo $newArr[$random6Posts[$i]][0]; ?></a></h3>
+										<h3 class="post-title"><a href="?id=<?php echo $newArr[$random6Posts[$i]][0]; ?>"><?php echo $newArr[$random6Posts[$i]][1]; ?></a></h3>
 									</div>
 								</div>
 							</div>

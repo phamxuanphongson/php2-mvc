@@ -14,24 +14,24 @@
       $short_desc = $_POST['short_desc'];
       $content = $_POST['content'];
       $id = $_POST['id'];
-      var_dump($id);
-      die();
+      
       $bl = true;
       
 
       if (empty($title)) {
-        $errTitle['title'] =  'Vui long nhap ten tieu de !!';
+        $err['title'] =  'Vui long nhap ten tieu de !!';
         $bl = false;
       }
       elseif (empty($short_desc)) {
-        $errSd['short_desc'] = 'Vui long nhap mo ta ngan !!!';
+        $err['short_desc'] = 'Vui long nhap mo ta ngan !!!';
         $bl = false;
       }
       elseif (empty($content)) {
-        $errContent['content'] = 'Vui long nhap noi dung !!!';
+        $err['content'] = 'Vui long nhap noi dung !!!';
         $bl = false;
       }
       elseif (empty($image)) {
+        $err['images'] = 'Vui long chon 1 anh !!!';
         $bl = false;
       }
 
@@ -82,7 +82,7 @@
                     <label>Title</label>
                     <input type="text" name="title" class="form-control" value="<?php echo $post['title']  ?>">
                    
-                    <span class="text-danger"><!-- {{$errors->first('title')}} --></span>
+                    <span class="text-danger"><?php echo isset($err['title']) ? $err['title'] : '' ?></span>
                     
                 </div>
                 
@@ -94,7 +94,7 @@
                         include_once '../model/model.php';
                         $model = new model(); 
                         $allCates = $model->selectAllCates();
-                        $allPosts = $model->selectAllPosts();
+                        
                        ?>
                        <?php foreach ($allCates as $cate): ?>
                          <option 
@@ -121,7 +121,7 @@
                     <label>Image's posts</label>
                     <input type="file" name="image" class="form-control" >
                     
-                        <span class="text-danger"></span>
+                        <span class="text-danger"><?php echo isset($err['images']) ? $err['images'] : '' ?></span>
                    
                 </div>
             </div>
@@ -132,7 +132,7 @@
                     <label>Short_Desc</label>
                     <textarea class="form-control" name="short_desc" rows="5"><?php echo $post['short_desc'] ?></textarea>
                     
-                        <span class="text-danger"></span>
+                        <span class="text-danger"><?php echo isset($err['short_desc']) ? $err['short_desc'] : '' ?></span>
                    
                 </div>
             </div>
@@ -143,7 +143,7 @@
                     <label>Content</label>
                     <textarea id="content" class="form-control" name="content" rows="15"><?php echo $post['content'] ?></textarea>
                
-                        <span class="text-danger"></span>
+                        <span class="text-danger"><?php echo isset($err['content']) ? $err['content'] : '' ?></span>
                     
                 </div>
             </div>
