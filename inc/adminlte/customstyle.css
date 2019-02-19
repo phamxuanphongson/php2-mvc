@@ -1,0 +1,9 @@
+.customtable>thead>tr>th{
+	
+	text-align: center;
+}
+.customtable>tbody>tr>th,td{
+	
+	text-align: center;
+	line-height: 70px !important;
+}

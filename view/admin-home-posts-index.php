@@ -18,7 +18,7 @@
 
     <!-- Main content -->
     <section class="content">
-     <table class="table">
+     <table class="table customtable">
   <thead>
     <tr>
       <th>ID</th>

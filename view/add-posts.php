@@ -1,6 +1,6 @@
+<?php include_once '../model/model.php'; ?>
 <?php 
-      if (isset($_POST['save-btn'])) {
-
+      if (isset($_POST['save-newpost-btn'])) {
       $model = new model();
       $title = $_POST['title'];
       $cate_id = $_POST['cate_id'];
@@ -28,7 +28,7 @@
       }
 
       if ($bl == true) {
-        include_once '../model/model.php';
+        
         $nameImage = $model->uploadImage($image);
         // var_dump($nameImage);
         $doAddPost = $model->addPost($title,$short_desc,$content,$nameImage,$cate_id);
@@ -84,7 +84,6 @@
                     <label>Danh mục</label>
                     <select name="cate_id" class="form-control">
                       <?php
-                        include_once '../model/model.php';
                         $model = new model(); 
                         $allCates = $model->selectAllCates();
                         $allPosts = $model->selectAllPosts();
