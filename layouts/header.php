@@ -1,6 +1,7 @@
 <?php 
 	$model = new model();
 	$getAllCates = $model->selectAllCates();
+	$getAllCate = $model->selectAllCates();
  ?>
  <!DOCTYPE html>
 <html lang="en">
@@ -30,10 +31,22 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
-
+		<style type="text/css" media="screen">
+			<?php foreach ($getAllCates as $obj): ?>
+				.nav-menu li.cat-<?php echo $obj['id'] ?> a:after {
+					     background-color: <?php echo $obj['color'] ?>;
+				}
+				.nav-menu li.cat-<?php echo $obj['id'] ?> a:hover, .nav-menu li.cat-<?php echo $obj['id'] ?> a:focus {
+				     color: <?php echo $obj['color'] ?>;
+				}
+				.post-meta .post-category.cat-<?php echo $obj['id'] ?> {
+				     background-color: <?php echo $obj['color'] ?>;
+				}
+			<?php endforeach ?>
+		</style>
     </head>
 	<body>
-
+	
 		<!-- Header -->
 		<header id="header">
 			<!-- Nav -->
@@ -49,7 +62,7 @@
 
 						<!-- nav -->
 						<ul class="nav-menu nav navbar-nav">
-							<?php foreach ($getAllCates as $element => $obj) { ?>
+							<?php foreach ($getAllCate as $obj) { ?>
 
 								<li class="cat-<?php echo $obj['id']; ?>"><a href="?categories-<?php echo $obj['id'] ?>"><?php echo $obj['name']; ?></a></li>
 

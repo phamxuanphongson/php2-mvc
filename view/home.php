@@ -17,7 +17,7 @@
 					<?php $cates = $model->getOneCate($obj['cate_id']); ?>
 					<div class="col-md-6">
 						<div class="post post-thumb">
-							<a class="post-img" href="blog-post.html"><img src="../inc/img/post-1.jpg" alt=""></a>
+							<a class="post-img" href="blog-post.html"><img src="../uploaded/images/<?php echo $obj['images'] ?>" alt=""></a>
 							<div class="post-body">
 								<div class="post-meta">
 									<a class="post-category cat-<?php echo $cates['id'];?>" href=""><?php echo $cates['name']; ?></a>
@@ -28,8 +28,6 @@
 							</div>
 						</div>
 					</div>
-
-
 					<?php } ?>
 
 
@@ -53,7 +51,7 @@
 					<?php  
 						foreach ($get20LastPosts as $index => $obj) {
 							// ep title va cate id vao  1 mang, sau do ep tat ca vao 1 mang moi
-							$newArr[] = array($obj['id'],$obj['title'],$obj['cate_id']);
+							$newArr[] = array($obj['id'],$obj['title'],$obj['cate_id'],$obj['images']);
 						}
 						// lay ra 6 so random
 						$random6Posts = array_rand($newArr,6);
@@ -63,7 +61,7 @@
 							<?php $cates = $model->getOneCate($newArr[$random6Posts[$i]][2]); ?>
 							<div class="col-md-4">
 								<div class="post">
-									<a class="post-img" href="blog-post.html"><img src="../inc/img/post-3.jpg" alt=""></a>
+									<a class="post-img" href="blog-post.html"><img src="../uploaded/images/<?php echo $newArr[$random6Posts[$i]][3]; ?>" alt=""></a>
 									<div class="post-body">
 										<div class="post-meta">
 											<a class="post-category cat-<?php echo $cates['id'];?>" href="category.html"><?php echo $cates['name'] ?></a>
@@ -73,7 +71,7 @@
 									</div>
 								</div>
 							</div>
-						<?php } ?>
+							<?php } ?>
 						
 					<div class="clearfix visible-md visible-lg"></div>
 
