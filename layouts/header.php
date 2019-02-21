@@ -2,6 +2,7 @@
 	$model = new model();
 	$getAllCates = $model->selectAllCates();
 	$getAllCate = $model->selectAllCates();
+	
  ?>
  <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +25,9 @@
 
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href="../inc/css/style.css"/>
+		<script src="../inc/js/jquery.min.js"></script>
+		<script src="../inc/js/bootstrap.min.js"></script>
+		<script src="../inc/js/main.js"></script>
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,7 +60,7 @@
 					<div class="container">
 						<!-- logo -->
 						<div class="nav-logo">
-							<a href="index.html" class="logo"><img src="../inc/img/logo.png" alt=""></a>
+							<a href="../index.php" class="logo"><img src="../inc/img/logo.png" alt=""></a>
 						</div>
 						<!-- /logo -->
 

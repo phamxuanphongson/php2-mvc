@@ -14,7 +14,6 @@
 
 			if (isset($_GET['id'])) {
 				$id = $_GET['id'];
-				
 				include_once '../view/post-detail.php';
 			}
 			elseif (isset($_POST['login-btn']) ) {

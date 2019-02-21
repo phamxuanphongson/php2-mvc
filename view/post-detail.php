@@ -1,5 +1,10 @@
 <?php include_once '../layouts/header.php'; ?>
-<?php $getThePost = $model->getOnePost($id); ?> 
+<?php 
+	$getThePost = $model->getOnePost($id);
+	$view = $getThePost['view'];
+	$view = $view+1;
+	$doUpdateView = $model->updateView($view,$id);
+?> 
 
 		<!-- /Header -->
 		<div id="post-header" class="page-header">

@@ -116,6 +116,13 @@ class model extends database{
 		return parent::queryExecSQL($sql);
 	}
 
+	public function updateView($view,$id)
+	{	
+		
+		$sql = "update posts set view='$view' where id = '$id'";
+		return parent::queryExecSQL($sql);
+	}
+
 	public function uploadImage($fileImage)
 	{
 		$fileImageName = $fileImage['name'];
@@ -140,6 +147,12 @@ class model extends database{
 	public function getAllPostsFromCateId($cate_id)
 	{
 		$sql = "select * from posts where cate_id ='$cate_id' ";
+		return parent::querySelectAll($sql);
+	}
+
+	public function get6PostsMostView()
+	{
+		$sql = "select * from posts ORDER BY view DESC LIMIT 6";
 		return parent::querySelectAll($sql);
 	}
 

@@ -2,7 +2,8 @@
 <?php 
 	$getTheCate = $model->getOneCate($id);
 
- ?>		<div class="page-header">
+ ?>		
+ <div class="page-header">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-10">
@@ -20,7 +21,7 @@
 					<div class="col-md-8">
 						<div class="row">
 							<!-- post -->
-							<div class="col-md-12">
+							<!-- <div class="col-md-12">
 								<div class="post post-thumb">
 									<a class="post-img" href="blog-post.html"><img src="./img/post-1.jpg" alt=""></a>
 									<div class="post-body">
@@ -31,37 +32,12 @@
 										<h3 class="post-title"><a href="blog-post.html">Javascript : Prototype vs Class</a></h3>
 									</div>
 								</div>
-							</div>
+							</div> -->
 							<!-- /post -->
-										
-							<!-- post -->
-							<div class="col-md-6">
-								<div class="post">
-									<a class="post-img" href="blog-post.html"><img src="./img/post-4.jpg" alt=""></a>
-									<div class="post-body">
-										<div class="post-meta">
-											<a class="post-category cat-2" href="#">JavaScript</a>
-											<span class="post-date">March 27, 2018</span>
-										</div>
-										<h3 class="post-title"><a href="blog-post.html">Chrome Extension Protects Against JavaScript-Based CPU Side-Channel Attacks</a></h3>
-									</div>
-								</div>
-							</div>
+							
 							<!-- /post -->
 
-							<!-- post -->
-							<div class="col-md-6">
-								<div class="post">
-									<a class="post-img" href="blog-post.html"><img src="./img/post-6.jpg" alt=""></a>
-									<div class="post-body">
-										<div class="post-meta">
-											<a class="post-category cat-2" href="#">JavaScript</a>
-											<span class="post-date">March 27, 2018</span>
-										</div>
-										<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The Backend Development Block!</a></h3>
-									</div>
-								</div>
-							</div>
+							
 							<!-- /post -->
 							
 							<div class="clearfix visible-md visible-lg"></div>
@@ -75,69 +51,26 @@
 								</div>
 							</div>
 							<!-- ad -->
+							<?php $getAllPostsFromCateId = $model->getAllPostsFromCateId($id); ?>			
 							
-							<!-- post -->
-							<div class="col-md-12">
-								<div class="post post-row">
-									<a class="post-img" href="blog-post.html"><img src="./img/post-2.jpg" alt=""></a>
-									<div class="post-body">
-										<div class="post-meta">
-											<a class="post-category cat-2" href="#">JavaScript</a>
-											<span class="post-date">March 27, 2018</span>
-										</div>
-										<h3 class="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use JQuery?</a></h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...</p>
-									</div>
-								</div>
-							</div>
-							<!-- /post -->
+							<?php foreach ($getAllPostsFromCateId as $post): ?>
 							
-							<!-- post -->
 							<div class="col-md-12">
 								<div class="post post-row">
-									<a class="post-img" href="blog-post.html"><img src="./img/post-5.jpg" alt=""></a>
+									<a class="post-img" href="blog-post.html"><img src="../uploaded/images/<?php echo $post['images'] ?>" alt=""></a>
 									<div class="post-body">
 										<div class="post-meta">
-											<a class="post-category cat-2" href="#">JavaScript</a>
+											<a class="post-category cat-<?php echo $getTheCate['id']; ?>" href="#"><?php echo $getTheCate['name']; ?></a>
 											<span class="post-date">March 27, 2018</span>
 										</div>
-										<h3 class="post-title"><a href="blog-post.html">Microsoft’s TypeScript Fills A Long-standing Void In JavaScript</a></h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...</p>
+										<h3 class="post-title"><a href="?id=<?php echo $post['id'] ?>"><?php echo $post['title'] ?></a></h3>
+										<p class="short-d"><?php echo $post['short_desc'] ?></p>
 									</div>
 								</div>
 							</div>
-							<!-- /post -->
-
-							<!-- post -->
-							<div class="col-md-12">
-								<div class="post post-row">
-									<a class="post-img" href="blog-post.html"><img src="./img/post-3.jpg" alt=""></a>
-									<div class="post-body">
-										<div class="post-meta">
-											<a class="post-category cat-2" href="#">JavaScript</a>
-											<span class="post-date">March 27, 2018</span>
-										</div>
-										<h3 class="post-title"><a href="blog-post.html">Javascript : Prototype vs Class</a></h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...</p>
-									</div>
-								</div>
-							</div>
-							<!-- /post -->
 							
-							<!-- post -->
-							<div class="col-md-12">
-								<div class="post post-row">
-									<a class="post-img" href="blog-post.html"><img src="./img/post-1.jpg" alt=""></a>
-									<div class="post-body">
-										<div class="post-meta">
-											<a class="post-category cat-2" href="#">JavaScript</a>
-											<span class="post-date">March 27, 2018</span>
-										</div>
-										<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The Backend Development Block!</a></h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...</p>
-									</div>
-								</div>
-							</div>
+							<?php endforeach ?>
+							
 							<!-- /post -->
 							
 							<div class="col-md-12">
@@ -210,7 +143,7 @@
 						<!-- /catagories -->
 						
 						<!-- tags -->
-						<div class="aside-widget">
+						<!-- <div class="aside-widget">
 							<div class="tags-widget">
 								<ul>
 									<li><a href="#">Chrome</a></li>
@@ -224,11 +157,11 @@
 									<li><a href="#">Website</a></li>
 								</ul>
 							</div>
-						</div>
+						</div> -->
 						<!-- /tags -->
 						
 						<!-- archive -->
-						<div class="aside-widget">
+						<!-- <div class="aside-widget">
 							<div class="section-title">
 								<h2>Archive</h2>
 							</div>
@@ -239,7 +172,7 @@
 									<li><a href="#">Mar 2018</a></li>
 								</ul>
 							</div>
-						</div>
+						</div> -->
 						<!-- /archive -->
 					</div>
 				</div>
