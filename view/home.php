@@ -54,6 +54,7 @@
 
 					<?php  
 						foreach ($get20LastPosts as $index => $obj) {
+
 							// ep title va cate id vao  1 mang, sau do ep tat ca vao 1 mang moi
 							$newArr[] = array($obj['id'],$obj['title'],$obj['cate_id'],$obj['images']);
 						}
@@ -187,17 +188,26 @@
 							</div>
 						</div>
 
-						<div class="aside-widget text-center">
-							<a href="#" style="display: inline-block;margin: auto;">
-								<img class="img-responsive" src="../uploaded/images/Screenshot from 2019-02-17 23-09-33.png" alt="">
-							</a>
-						</div>
+						<?php $getAllAds = $model->selectAll('ads') ?>
+						<?php foreach ($getAllAds as $ads) {
+							$newRandomAd[] = array($ads['id'],$ads['images'],$ads['link']);
+							
+						}
+						
+						$random2Ads = array_rand($newRandomAd,2);
+						
+						?>
 
-						<div class="aside-widget text-center">
-							<a href="#" style="display: inline-block;margin: auto;">
-								<img class="img-responsive" src="../uploaded/images/Screenshot from 2019-02-17 23-09-33.png" alt="">
-							</a>
-						</div>
+						<?php for ($i = 0; $i <2 ; $i++) { ?>
+						
+							<div class="aside-widget text-center">
+								<a href="<?php echo $newRandomAd[$random2Ads[$i]][2]; ?> " style="display: inline-block;margin: auto;">
+									<img class="img-responsive" src="../uploaded/images/<?php echo $newRandomAd[$random2Ads[$i]][1]; ?>" alt="">
+								</a>
+							</div>
+						<?php	} ?>
+						
+
 					
 					</div>
 				</div>

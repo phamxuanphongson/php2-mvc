@@ -91,6 +91,20 @@ class model extends database{
 		return parent::queryExecSQL($sql);
 	}
 
+	public function editAds($nameImage,$link,$id)
+	{	
+		if ($nameImage == null) {
+			$sql = "update ads set link ='$link' where id = '$id'";
+		}
+		elseif ($link == null) {
+			$sql = "update ads set images ='$nameImage' where id = '$id'";
+		}
+		else{
+			$sql = "update ads set images='$nameImage',link='$link' where id = '$id'";
+		}
+		return parent::queryExecSQL($sql);
+	}
+
 	public function updateView($view,$id)
 	{	
 		

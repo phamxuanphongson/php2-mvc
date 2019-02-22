@@ -918,6 +918,10 @@ RESPONSIVE
      text-align: center;
      min-width: 80px;
 }
+.managerAdmin{
+     left: -20px !important;
+     right: unset !important;
+}
 /*=========================================================
 	RESPONSIVE
 ===========================================================*/

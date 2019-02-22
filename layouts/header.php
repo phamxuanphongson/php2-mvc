@@ -84,6 +84,18 @@
 					            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					              <span class="hidden-xs"><?php echo isset($name) ? $name : '' ?></span>
 					            </a>
+					            <?php 
+					            	if (isset($_SESSION['auth'])) {
+					            		$role = $_SESSION['auth']['role'];
+					            		if ($role == 1) {
+					            			echo '<a href="../view/admin-home"class="btn btn-default btn-flat dropdown-menu managerAdmin">Manager</a>';
+					            		}
+					            		else {
+					            			echo '';
+					            		}
+					            	}
+
+					             ?>
 					            <a href="../view/log-out.php"class="btn btn-default btn-flat dropdown-menu">Sign out</a>   
 					         </li>
 							<?php echo isset($_SESSION['auth']) ? '' : '<a href="../view/login.php" class="btn login-logo"><i class="fa fa-user"></i></a>' ?>

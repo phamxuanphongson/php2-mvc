@@ -3,7 +3,7 @@
  if (isset($_GET['id'])){
     $id = $_GET['id'];
     $model = new model();
-    $post = $model->getOnePost($id);
+    $post = $model->getOne('posts',$id);
  }
 
 
@@ -95,9 +95,8 @@
                     <label>Danh mục</label>
                     <select name="cate_id" class="form-control">
                       <?php
-                        include_once '../model/model.php';
                         $model = new model(); 
-                        $allCates = $model->selectAllCates();
+                        $allCates = $model->selectAll('categories');
                         
                        ?>
                        <?php foreach ($allCates as $cate): ?>

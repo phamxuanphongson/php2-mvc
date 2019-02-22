@@ -31,7 +31,7 @@
               session_start();
               $_SESSION['auth'] = ['username' => $users['username'],'email' => $email, 'password' => $password,'role' => $users['role']];
               ;
-              header('Location:../view/home.php');
+              header('Location:../index.php');
             }
             
         }

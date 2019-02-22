@@ -54,12 +54,6 @@
 						</div>
 
 						<!-- ad -->
-						<div class="section-row text-center">
-							<a href="#" style="display: inline-block;margin: auto;">
-								<img class="img-responsive" src="../inc/img/ad-2.jpg" alt="">
-							</a>
-						</div>
-						<!-- ad -->
 						
 						<!-- author -->
 						
@@ -153,11 +147,21 @@
 					<!-- aside -->
 					<div class="col-md-4">
 						<!-- ad -->
+						<?php $getAllAds = $model->selectAll('ads') ?>
+						<?php foreach ($getAllAds as $ads) {
+							$newRandomAd[] = array($ads['id'],$ads['images'],$ads['link']);
+							
+						}
+						
+						$random2Ads = array_rand($newRandomAd,2);
+						
+						?>
 						<div class="aside-widget text-center">
-							<a href="#" style="display: inline-block;margin: auto;">
-								<img class="img-responsive" src="../inc/img/ad-1.jpg" alt="">
+							<a href="<?php echo $newRandomAd[$random2Ads[0]][2]; ?> " style="display: inline-block;margin: auto;">
+								<img class="img-responsive" src="../uploaded/images/<?php echo $newRandomAd[$random2Ads[0]][1]; ?>" alt="">
 							</a>
 						</div>
+						
 						<!-- /ad -->
 
 						<!-- post widget -->
