@@ -21,10 +21,19 @@
     if ($boolean == true) {
       foreach ($usersInDb as $users) {
         if ($email == $users['email'] && $password == $users['password']) {
-            session_start();
-            $_SESSION['auth'] = ['email' => $email, 'password' => $password];
-            ;
-            header('Location:../view/admin-home.php');
+            if ($users['role'] == 1) {
+              session_start();
+              $_SESSION['auth'] = ['username' => $users['username'],'email' => $email, 'password' => $password,'role' => $users['role']];
+              ;
+              header('Location:../view/admin-home.php');
+            }
+            else {
+              session_start();
+              $_SESSION['auth'] = ['username' => $users['username'],'email' => $email, 'password' => $password,'role' => $users['role']];
+              ;
+              header('Location:../view/home.php');
+            }
+            
         }
         else {
           $err['email'] = 'Email khong ton tai !!!';

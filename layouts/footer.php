@@ -73,7 +73,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		<!-- /Footer -->
 
 		<!-- jQuery Plugins -->
-		
+		<script src="../inc/js/jquery.min.js"></script>
+		<script src="../inc/js/bootstrap.min.js"></script>
+		<script src="../inc/js/main.js"></script>
 		<script type="text/javascript">
 			$('.mostview').each((index,element)=>{
 				if (index >2) {

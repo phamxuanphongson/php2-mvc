@@ -2,7 +2,12 @@
 <?php 
   if (!isset($_SESSION['auth']) || count($_SESSION['auth']) == 0) {
       header('Location:../view/login.php');
-  } 
+  }
+  else {
+     if ($_SESSION['auth']['role'] == 0) {
+       header('Location:../index.php');
+     }
+   } 
 ?>
 <?php 
   if (isset($_POST['signout'])) {

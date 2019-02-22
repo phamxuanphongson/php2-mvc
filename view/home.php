@@ -20,7 +20,8 @@
 					<?php $cates = $model->getOne('categories',$obj['cate_id']); ?>
 					<div class="col-md-6">
 						<div class="post post-thumb">
-							<a class="post-img" href="blog-post.html"><img src="../uploaded/images/<?php echo $obj['images'] ?>" alt=""></a>
+							<a class="post-img" href="?id=<?php echo $obj
+									['id']; ?>"><img src="../uploaded/images/<?php echo $obj['images'] ?>" alt=""></a>
 							<div class="post-body">
 								<div class="post-meta">
 									<a class="post-category cat-<?php echo $cates['id'];?>" href=""><?php echo $cates['name']; ?></a>
@@ -77,21 +78,6 @@
 							<?php } ?>
 						
 					<div class="clearfix visible-md visible-lg"></div>
-
-				
-					<!-- <div class="col-md-4">
-						<div class="post">
-							<a class="post-img" href="blog-post.html"><img src="../inc/img/post-6.jpg" alt=""></a>
-							<div class="post-body">
-								<div class="post-meta">
-									<a class="post-category cat-2" href="category.html">JavaScript</a>
-									<span class="post-date">March 27, 2018</span>
-								</div>
-								<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The Backend Development Block!</a></h3>
-							</div>
-						</div>
-					</div> -->
-
 				</div>
 	
 			</div>

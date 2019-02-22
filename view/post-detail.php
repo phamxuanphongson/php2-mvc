@@ -4,6 +4,7 @@
 	$view = $getThePost['view'];
 	$view = $view+1;
 	$doUpdateView = $model->updateView($view,$id);
+	$getTheCate = $model->getOne('categories',$getThePost['cate_id']);
 ?> 
 
 		<!-- /Header -->
@@ -13,7 +14,7 @@
 					<div class="row">
 						<div class="col-md-10">
 							<div class="post-meta">
-								<a class="post-category cat-2" href="category.html">JavaScript</a>
+								<a class="post-category cat-<?php echo $getTheCate['id'] ?>" href="category.html"><?php echo $getTheCate['name'] ?></a>
 								<span class="post-date">March 27, 2018</span>
 							</div>
 							<h1><?php echo $getThePost['title']; ?></h1>

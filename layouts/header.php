@@ -1,6 +1,12 @@
+<?php session_start(); ?>
+<?php 
+  if (isset($_SESSION['auth'])) {
+      $name = $_SESSION['auth']['username'];
+  } 
+?>
+<?php include_once '../model/model.php'; ?>
 <?php 
 	$model = new model();
-	
  ?>
  <!DOCTYPE html>
 <html lang="en">
@@ -23,9 +29,7 @@
 
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href="../inc/css/style.css"/>
-		<script src="../inc/js/jquery.min.js"></script>
-		<script src="../inc/js/bootstrap.min.js"></script>
-		<script src="../inc/js/main.js"></script>
+		
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -75,7 +79,14 @@
 						<!-- /nav -->
 						
 						<form action="../view/login.php" class="navbar-form navbar-right" method="post">
-							<a href="../view/admin-home.php" class="btn" title=""><i class="fa fa-user"></i></a>
+						
+							<li style="display: inline-block;" class="dropdown user user-menu">
+					            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					              <span class="hidden-xs"><?php echo isset($name) ? $name : '' ?></span>
+					            </a>
+					            <a href="../view/log-out.php"class="btn btn-default btn-flat dropdown-menu">Sign out</a>   
+					         </li>
+							<?php echo isset($_SESSION['auth']) ? '' : '<a href="../view/login.php" class="btn login-logo"><i class="fa fa-user"></i></a>' ?>
 							<button name="btn-search" type="submit" class="btn btn-default navbar-btn"><i class="fa fa-search"></i></button>
 							<div class="form-group">
 								<input class="form-control" type="text" name="search" placeholder="Enter Your Search ...">

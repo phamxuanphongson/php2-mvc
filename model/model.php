@@ -31,7 +31,6 @@ class model extends database{
 		$sql = "select * from $nameTable where $where = '$table_id' ORDER BY $orderBy $sort LIMIT $limit";
 		return parent::querySelectAll($sql);
 	}
-	
 
 	public function getRecordsNOSL($nameTable,$orderBy,$sort,$limit)
 	{

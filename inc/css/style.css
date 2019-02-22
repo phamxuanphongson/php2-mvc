@@ -911,6 +911,13 @@ RESPONSIVE
 .short-d{
      overflow: hidden;
 }
+.post .post-title{
+     overflow: hidden;
+}
+.dropdown-menu{
+     text-align: center;
+     min-width: 80px;
+}
 /*=========================================================
 	RESPONSIVE
 ===========================================================*/
