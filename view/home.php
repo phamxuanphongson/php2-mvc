@@ -1,9 +1,9 @@
 <?php include_once '../layouts/header.php' ?>
 <?php  
-	$get2LastPosts = $model->get2LastRecords();
-	$get20LastPosts = $model->get20LastRecords();
-	$get3OlderPosts = $model->get3LastRecordsAfter20Posts();
-	$get6PostsMostView = $model->get6PostsMostView();
+	$get2LastPosts = $model->getRecordsNOSL('posts','id','desc',2);
+	$get20LastPosts = $model->getRecordsNOSL('posts','id','desc',20);
+	$get3OlderPosts = $model->getRecordsNOSLT('posts','id','desc',20,3);
+	$get6PostsMostView = $model->getRecordsNOSL('posts','view','desc',6);
 	$getAllCates = $model->selectAll('categories');
 
 ?>

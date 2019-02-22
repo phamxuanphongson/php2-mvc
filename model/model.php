@@ -14,40 +14,42 @@ class model extends database{
 		return parent::queryGetOne($sql);
 	}
 
+	public function getMany($tableName,$where,$table_id)
+	{
+		$sql = "select * from $tableName where $where ='$table_id' ";
+		return parent::querySelectAll($sql);
+	}
+
 	public function countAll($nameTable)
 	{
 		$sql = "select * from $nameTable";
 		return parent::querySelectAll($sql)->rowcount();
 	}
 
-
+	public function getRecordsNWTOSL($nameTable,$where,$table_id,$orderBy,$sort,$limit)
+	{
+		$sql = "select * from $nameTable where $where = '$table_id' ORDER BY $orderBy $sort LIMIT $limit";
+		return parent::querySelectAll($sql);
+	}
 	
 
-	public function getLastRecord()
+	public function getRecordsNOSL($nameTable,$orderBy,$sort,$limit)
 	{
-		$sql = "select * from posts ORDER BY id DESC LIMIT 1";
+		$sql = "select * from $nameTable ORDER BY $orderBy $sort LIMIT $limit";
 		return parent::querySelectAll($sql);
 	}
 
-	public function get2LastRecords()
+	public function getRecordsNOSLT($nameTable,$orderBy,$sort,$limit,$take)
 	{
-		$sql = "select * from posts ORDER BY id DESC LIMIT 2";
+		$sql = "select * from $nameTable ORDER BY $orderBy $sort LIMIT $limit, $take";
 		return parent::querySelectAll($sql);
 	}
 
-	public function get20LastRecords()
+	public function delete($tableName,$id)
 	{
-		$sql = "select * from posts ORDER BY id DESC LIMIT 20";
-		return parent::querySelectAll($sql);
+		$sql = "delete from $tableName where id ='$id' ";
+		return parent::queryExecSQL($sql);
 	}
-
-	public function get3LastRecordsAfter20Posts()
-	{
-		$sql = "select * from posts ORDER BY id DESC LIMIT 20, 3";
-		return parent::querySelectAll($sql);
-	}
-
-	
 
 	public function addAccount($username,$password,$email)
 	{
@@ -104,36 +106,6 @@ class model extends database{
 		$storeAs = '../uploaded/images/';
 		move_uploaded_file($imageTempName, $storeAs.$fileImageName);
 		return $fileImageName;
-	}
-
-	public function deletePost($id)
-	{
-		$sql = "delete from posts where id ='$id' ";
-		return parent::queryExecSQL($sql);
-	}
-
-	public function deleteCate($id)
-	{
-		$sql = "delete from categories where id ='$id' ";
-		return parent::queryExecSQL($sql);
-	}
-
-	public function getAllPostsFromCateId($cate_id)
-	{
-		$sql = "select * from posts where cate_id ='$cate_id' ";
-		return parent::querySelectAll($sql);
-	}
-
-	public function get6PostsMostView()
-	{
-		$sql = "select * from posts ORDER BY view DESC LIMIT 6";
-		return parent::querySelectAll($sql);
-	}
-
-	public function getPostsCOSL($cate_id,$orderBy,$sort,$limit)
-	{
-		$sql = "select * from posts where cate_id = '$cate_id' ORDER BY $orderBy $sort LIMIT $limit";
-		return parent::querySelectAll($sql);
 	}
 
 

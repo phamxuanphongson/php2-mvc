@@ -51,7 +51,7 @@
 								</div>
 							</div>
 							<!-- ad -->
-							<?php $getAllPostsFromCateId = $model->getAllPostsFromCateId($id); ?>			
+							<?php $getAllPostsFromCateId = $model->getMany('posts','cate_id',$id); ?>			
 							
 							<?php foreach ($getAllPostsFromCateId as $post): ?>
 							
@@ -95,7 +95,7 @@
 							<div class="section-title">
 								<h2>Most Read</h2>
 							</div>
-							<?php $get4Posts = $model->getPostsCOSL($id,'view','DESC',4) ?>
+							<?php $get4Posts = $model->getRecordsNWTOSL('posts','cate_id',$id,'cate_id','desc',4) ?>
 							<?php foreach ($get4Posts as $post): ?>
 								<div class="post post-widget">
 									<a class="post-img" href="blog-post.html"><img src="../uploaded/images/<?php echo $post['images'] ?>" alt=""></a>

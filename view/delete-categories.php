@@ -3,7 +3,7 @@
 	if (isset($_GET['id'])) {
 		$id = $_GET['id'];
 		$model = new model();
-		$doDeleteCate = $model->deleteCate($id);
+		$doDeleteCate = $model->delete('categories',$id);
 		if ($doDeleteCate == true) {
 			header('Location:../view/admin-home-categories-index.php');
 		}

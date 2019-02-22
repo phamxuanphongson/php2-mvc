@@ -3,7 +3,7 @@
 	if (isset($_GET['id'])) {
 		$id = $_GET['id'];
 		$model = new model();
-		$doDeletePost = $model->deletePost($id);
+		$doDeletePost = $model->delete('posts',$id);
 		if ($doDeletePost == true) {
 			header('Location:../view/admin-home-posts-index.php');
 		}
