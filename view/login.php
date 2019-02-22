@@ -4,7 +4,7 @@
     $model = new model();
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $usersInDb = $model->selectAllUsers();
+    $usersInDb = $model->selectAll('users');
     $boolean = true;
     if (empty($email)) {
       $err['email'] = 'Email khong duoc de trong';

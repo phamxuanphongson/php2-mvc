@@ -4,7 +4,7 @@
 	$get20LastPosts = $model->get20LastRecords();
 	$get3OlderPosts = $model->get3LastRecordsAfter20Posts();
 	$get6PostsMostView = $model->get6PostsMostView();
-	$getAllCates = $model->selectAllCates();
+	$getAllCates = $model->selectAll('categories');
 
 ?>
 
@@ -17,7 +17,7 @@
 					<?php 
 					foreach ($get2LastPosts as $obj) { ?>
 					<!-- lay tat ca cac categories theo cate_id	 -->
-					<?php $cates = $model->getOneCate($obj['cate_id']); ?>
+					<?php $cates = $model->getOne('categories',$obj['cate_id']); ?>
 					<div class="col-md-6">
 						<div class="post post-thumb">
 							<a class="post-img" href="blog-post.html"><img src="../uploaded/images/<?php echo $obj['images'] ?>" alt=""></a>
@@ -61,7 +61,7 @@
 
 						for ($i=0; $i <6 ; $i++) { ?>
 							<!-- lay ra categories cua 6 random post -->
-							<?php $cates = $model->getOneCate($newArr[$random6Posts[$i]][2]); ?>
+							<?php $cates = $model->getOne('categories',$newArr[$random6Posts[$i]][2]); ?>
 							<div class="col-md-4">
 								<div class="post">
 									<a class="post-img" href="blog-post.html"><img src="../uploaded/images/<?php echo $newArr[$random6Posts[$i]][3]; ?>" alt=""></a>
@@ -114,7 +114,7 @@
 
 					
 				<?php foreach ($get3OlderPosts as $post): ?>
-				<?php $cate = $model->getOneCate($post['cate_id']); ?>
+				<?php $cate = $model->getOne('categories',$post['cate_id']); ?>
 					<div class="col-md-4">
 						<div class="post">
 							<a class="post-img" href="blog-post.html"><img src="../uploaded/images/<?php echo $post['images'] ?>" alt=""></a>
@@ -150,7 +150,7 @@
 								</div>
 							</div>
 							<?php foreach ($get6PostsMostView as $posts): ?>
-							<?php $cates = $model->getOneCate($obj['cate_id']); ?>
+							<?php $cates = $model->getOne('categories',$obj['cate_id']); ?>
 								<div class="col-md-12 mostview">
 									<div class="post post-row">
 										<a class="post-img" href="blog-post.html"><img src="../uploaded/images/<?php echo $posts['images'] ?>" alt=""></a>

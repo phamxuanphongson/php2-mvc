@@ -1,6 +1,6 @@
 <?php include_once '../layouts/header.php'; ?>
 <?php 
-	$getThePost = $model->getOnePost($id);
+	$getThePost = $model->getOne('posts',$id);
 	$view = $getThePost['view'];
 	$view = $view+1;
 	$doUpdateView = $model->updateView($view,$id);

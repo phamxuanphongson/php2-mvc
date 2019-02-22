@@ -4,9 +4,9 @@
 
 <?php 
   $model = new model();
-  $countPosts = $model->countAllPosts();
-  $countCates = $model->countAllCates();
-  $countUsers = $model->countAllUsers();
+  $countPosts = $model->countAll('posts');
+  $countCates = $model->countAll('categories');
+  $countUsers = $model->countAll('users');
 
 
  ?>

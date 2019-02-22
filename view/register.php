@@ -7,7 +7,7 @@
       $password = $_POST['password'];
       $pattern = '/^[a-zA-Z0-9]{3,16}[\S]$/';
       $boolean = true;
-      $usersInDb = $model->selectAllUsers();
+      $usersInDb = $model->selectAll('users');
       
       foreach ($usersInDb as $user ) {
         if (empty($email)) {

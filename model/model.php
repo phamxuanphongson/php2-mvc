@@ -2,48 +2,26 @@
 include 'db.php';
 class model extends database{
 
-
-	public function selectAllPosts()
+	public function selectAll($nameTable)
 	{
-		$sql = "select * from posts";
+		$sql = "select * from $nameTable";
 		return parent::querySelectAll($sql);
 	}
 
-	public function selectAllCates()
+	public function getOne($nameTable,$id)
 	{
-		$sql = "select * from categories";
-		return parent::querySelectAll($sql);
-	}
-
-	public function selectAllUsers()
-	{
-		$sql = "select * from users";
-		return parent::querySelectAll($sql);
-	}
-
-	public function countAllPosts()
-	{
-		$sql = "select * from posts";
-		return parent::querySelectAll($sql)->rowcount();
-	}
-
-	public function countAllCates()
-	{
-		$sql = "select * from categories";
-		return parent::querySelectAll($sql)->rowcount();
-	}
-
-	public function countAllUsers()
-	{
-		$sql = "select * from users";
-		return parent::querySelectAll($sql)->rowcount();
-	}
-
-	public function getOnePost($id)
-	{
-		$sql = "select * from posts where id ='$id' ";
+		$sql = "select * from $nameTable where id ='$id' ";
 		return parent::queryGetOne($sql);
 	}
+
+	public function countAll($nameTable)
+	{
+		$sql = "select * from $nameTable";
+		return parent::querySelectAll($sql)->rowcount();
+	}
+
+
+	
 
 	public function getLastRecord()
 	{
@@ -69,11 +47,7 @@ class model extends database{
 		return parent::querySelectAll($sql);
 	}
 
-	public function getOneCate($id)
-	{
-		$sql = "select * from categories where id ='$id' ";
-		return parent::queryGetOne($sql);
-	}
+	
 
 	public function addAccount($username,$password,$email)
 	{
@@ -155,6 +129,13 @@ class model extends database{
 		$sql = "select * from posts ORDER BY view DESC LIMIT 6";
 		return parent::querySelectAll($sql);
 	}
+
+	public function getPostsCOSL($cate_id,$orderBy,$sort,$limit)
+	{
+		$sql = "select * from posts where cate_id = '$cate_id' ORDER BY $orderBy $sort LIMIT $limit";
+		return parent::querySelectAll($sql);
+	}
+
 
 }
 

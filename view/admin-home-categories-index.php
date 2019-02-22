@@ -31,7 +31,7 @@
     
     <?php 
       $model = new model();
-      $allCates = $model->selectAllCates();
+      $allCates = $model->selectAll('categories');
     ?>
     <?php foreach ($allCates as $cate): ?>
         <tr>

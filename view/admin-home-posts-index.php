@@ -33,11 +33,11 @@
     
     <?php 
       $model = new model();
-      $allPosts = $model->selectAllPosts();
-      $allCates = $model->selectAllCates();
+      $allPosts = $model->selectAll('posts');
+      
     ?>
     <?php foreach ($allPosts as $post): ?>
-    <?php $theCate = $model->getOneCate($post['cate_id']) ?>
+    <?php $theCate = $model->getOne('categories',$post['cate_id']) ?>
         <tr>
           <th ><?php echo $post['id'] ?></th>
           <td ><?php echo $post['title'] ?></td>

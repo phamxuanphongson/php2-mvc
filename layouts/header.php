@@ -1,7 +1,5 @@
 <?php 
 	$model = new model();
-	$getAllCates = $model->selectAllCates();
-	$getAllCate = $model->selectAllCates();
 	
  ?>
  <!DOCTYPE html>
@@ -36,6 +34,7 @@
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		<style type="text/css" media="screen">
+			<?php $getAllCates = $model->selectAll('categories'); ?>
 			<?php foreach ($getAllCates as $obj): ?>
 				.nav-menu li.cat-<?php echo $obj['id'] ?> a:after {
 					     background-color: <?php echo $obj['color'] ?>;
@@ -66,7 +65,8 @@
 
 						<!-- nav -->
 						<ul class="nav-menu nav navbar-nav">
-							<?php foreach ($getAllCate as $obj) { ?>
+							<?php $getAllCates = $model->selectAll('categories'); ?>
+							<?php foreach ($getAllCates as $obj) { ?>
 
 								<li class="cat-<?php echo $obj['id']; ?>"><a href="?categories=<?php echo $obj['id'] ?>"><?php echo $obj['name']; ?></a></li>
 
