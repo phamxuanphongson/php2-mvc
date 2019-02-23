@@ -121,6 +121,12 @@ class model extends database{
 		return $fileImageName;
 	}
 
+	public function addCmt($username,$guestname,$message,$post_id)
+	{
+		$sql = "insert into comments value (NULL,N'$username',N'$guestname',N'$message',N'$post_id')";
+		return parent::queryExecSQL($sql);
+	}
+
 
 }
 

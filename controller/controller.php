@@ -40,7 +40,10 @@
 			elseif (isset($_GET['categories'])) {
 				$id = $_GET['categories'];
 				include_once '../view/categories.php';
-				
+			}
+			elseif (isset($_POST['btn-cmt'])) {
+				$id = $_POST['post_id'];
+				include_once '../view/post-detail.php';
 			}
 			else{
 				include_once '../view/home.php';
