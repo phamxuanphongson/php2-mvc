@@ -90,3 +90,4 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</script>
 	</body>
 </html>
+<?php ob_end_flush(); ?>

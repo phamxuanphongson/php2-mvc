@@ -1,14 +1,15 @@
-<?php session_start(); ?>
-<?php 
+<?php ob_start();?>
+<?php session_start();?>
+<?php
   if (isset($_SESSION['auth'])) {
       $name = $_SESSION['auth']['username'];
-  } 
+  }
 ?>
 <?php include_once '../model/model.php'; ?>
-<?php 
+<?php
 	$model = new model();
  ?>
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -53,8 +54,6 @@
 		</style>
     </head>
 	<body>
-	
-		<!-- Header -->
 		<header id="header">
 			<!-- Nav -->
 			<div id="nav">
@@ -84,7 +83,7 @@
 					            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					              <span class="hidden-xs"><?php echo isset($name) ? $name : '' ?></span>
 					            </a>
-					            <?php 
+					            <?php
 					            	if (isset($_SESSION['auth'])) {
 					            		$role = $_SESSION['auth']['role'];
 					            		if ($role == 1) {
@@ -94,11 +93,12 @@
 					            			echo '';
 					            		}
 					            	}
-
 					             ?>
-					            <a href="../view/log-out.php"class="btn btn-default btn-flat dropdown-menu">Sign out</a>   
+					            <a href="../view/log-out.php"class="btn btn-default btn-flat dropdown-menu">Sign out</a>
 					         </li>
-							<?php echo isset($_SESSION['auth']) ? '' : '<a href="../view/login.php" class="btn login-logo"><i class="fa fa-user"></i></a>' ?>
+							<?php if (!isset($_SESSION['auth'])) : ?>
+								<a href="../view/login.php" class="btn login-logo"><i class="fa fa-user"></i></a>
+							<?php endif ?>
 							<button name="btn-search" type="submit" class="btn btn-default navbar-btn"><i class="fa fa-search"></i></button>
 							<div class="form-group">
 								<input class="form-control" type="text" name="search" placeholder="Enter Your Search ...">
@@ -117,6 +117,3 @@
 			</div>
 			<!-- /Nav -->
 		</header>
-		<!-- /Header -->
-
-		<!-- section -->

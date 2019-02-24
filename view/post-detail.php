@@ -21,7 +21,7 @@
 			if ($bool == true) {
 				$doAddCmt = $model->addCmt($name,null,$message,$post_id);
 				if ($doAddCmt == true) {
-					header("Refresh:0");
+					header("Location:../controller/controller.php?id=$post_id");
 				}
 			}
 
@@ -41,15 +41,12 @@
 			if ($bool == true) {
 				$doAddCmt = $model->addCmt(null,$guestname,$message,$post_id);
 				if ($doAddCmt == true) {
-					header("Refresh:0");
+					header("Location:../controller/controller.php?id=$post_id");
 				}
 			}
-
 		}
 	}
-
- ?>
-
+?>
 		<!-- /Header -->
 		<div id="post-header" class="page-header">
 				<div class="background-img" style="background-image: url('../uploaded/images/<?php echo $getThePost['images']; ?>');"></div>
