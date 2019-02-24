@@ -25,7 +25,7 @@ class model extends database{
 		$sql = "select * from $nameTable";
 		return parent::querySelectAll($sql)->rowcount();
 	}
-
+										
 	public function getRecordsNWTOSL($nameTable,$where,$table_id,$orderBy,$sort,$limit)
 	{
 		$sql = "select * from $nameTable where $where = '$table_id' ORDER BY $orderBy $sort LIMIT $limit";

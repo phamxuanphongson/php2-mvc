@@ -5,6 +5,7 @@
 	$view = $view+1;
 	$doUpdateView = $model->updateView($view,$id);
 	$getTheCate = $model->getOne('categories',$getThePost['cate_id']);
+	$getCmts = $model->getMany('comments','posts_id',$id);
 ?> 
 <?php 
 	if (isset($_SESSION['auth'])) {
@@ -35,7 +36,7 @@
 			$bool = true;
 			if (empty($message)) {
 				$bool = false;
-				$err['message'] = "Vui long nhap binh luan truoc khi gui";
+				$err['messag<a href="#" class="reply">Reply</a>e'] = "Vui long nhap binh luan truoc khi gui";
 			}
 
 			if ($bool == true) {
@@ -54,7 +55,7 @@
 					<div class="row">
 						<div class="col-md-10">
 							<div class="post-meta">
-								<a class="post-category cat-<?php echo $getTheCate['id'] ?>" href="category.html"><?php echo $getTheCate['name'] ?></a>
+								<a class="post-category cat-<?php echo $getTheCate['id'] ?>" href="?categories=<?php echo $getTheCate['id'] ?>"><?php echo $getTheCate['name'] ?></a>
 								<span class="post-date">March 27, 2018</span>
 							</div>
 							<h1><?php echo $getThePost['title']; ?></h1>
@@ -63,7 +64,7 @@
 				</div>
 		</div>
 
-		<!-- section -->
+		<!-- section --><a href="#" class="reply">Reply</a>
 		<div class="section">
 			<!-- container -->
 			<div class="container">
@@ -95,23 +96,23 @@
 
 							<div class="post-comments">
 								<!-- comment -->
+								<?php foreach ($getCmts as $cmt): ?>
 								<div class="media">
-									<div class="media-left">
-										<img class="media-object" src="../inc/img/avatar.png" alt="">
-									</div>
-									<div class="media-body">
-										<div class="media-heading">
-											<h4>John Doe</h4>
-											<span class="time">March 27, 2018 at 8:00 am</span>
-											<a href="#" class="reply">Reply</a>
+									
+										<div class="media-body">
+											<div class="media-heading">
+												<h3><?php echo $cmt['username'] ?></h3>
+												<h3><?php echo $cmt['guestname'] ?></h3>
+												<span class="time">March 27, 2018 at 8:00 am</span>
+												<!-- <a href="#" class="reply">Reply</a> -->
+											</div>
+											<p><?php echo $cmt['comment'] ?></p>	
 										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+									
+									
 
-										<!-- comment -->
-										
-										<!-- /comment -->
-									</div>
 								</div>
+								<?php endforeach ?>
 								<!-- /comment -->
 
 								
@@ -132,7 +133,7 @@
 								<input type="hidden" name="post_id" value="<?php echo $id ?>">
 								<div class="row">
 
-									<?php if (!isset($_SESSION['auth'])): ?>
+									<?php if (!isset($_SESSION['au•••••••••••••th'])): ?>
 										<div class="col-md-4">
 											<div class="form-group">
 												<span>Name *</span>
@@ -170,27 +171,22 @@
 							<div class="section-title">
 								<h2>Related Posts</h2>
 							</div>
-							<div class="post post-thumb">
-								<a class="post-img" href="blog-post.html"><img src="../inc/img/post-2.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-meta">
-										<a class="post-category cat-3" href="#">Jquery</a>
-										<span class="post-date">March 27, 2018</span>
+							<?php $get2relatedposts = $model->getRecordsNWTOSL('posts','cate_id',$getThePost['cate_id'],'id','desc',2) ?>
+							<?php foreach ($get2relatedposts as $post): ?>
+								<div class="post post-thumb">
+									<a class="post-img" href="blog-post.html"><img src="../inc/img/post-2.jpg" alt=""></a>
+									<div class="post-body">
+										<div class="post-meta">
+											<a class="post-category cat-3" href="#">Jquery</a>
+											<span class="post-date">March 27, 2018</span>
+										</div>
+										<h3 class="post-title"><a href="blog-post.html"><?php echo $post['title'] ?></a></h3>
 									</div>
-									<h3 class="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use JQuery?</a></h3>
 								</div>
-							</div>
+							<?php endforeach ?>
+							
 
-							<div class="post post-thumb">
-								<a class="post-img" href="blog-post.html"><img src="../inc/img/post-1.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-meta">
-										<a class="post-category cat-2" href="#">JavaScript</a>
-										<span class="post-date">March 27, 2018</span>
-									</div>
-									<h3 class="post-title"><a href="blog-post.html">Chrome Extension Protects Against JavaScript-Based CPU Side-Channel Attacks</a></h3>
-								</div>
-							</div>
+							
 						</div>
 						<!-- /post widget -->
 						
