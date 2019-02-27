@@ -66,7 +66,7 @@
 
     <!-- Main content -->
     <section class="content">
-    <form enctype="multipart/form-data"action="../controller/controller.php" method="post">
+    <form enctype="multipart/form-data" action="../controller/controller.php" method="post">
         
       <!--  <input type="date" name="" value=""> -->
         <div class="row">

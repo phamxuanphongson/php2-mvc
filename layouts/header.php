@@ -87,7 +87,7 @@
 					            	if (isset($_SESSION['auth'])) {
 					            		$role = $_SESSION['auth']['role'];
 					            		if ($role == 1) {
-					            			echo '<a href="../view/admin-home"class="btn btn-default btn-flat dropdown-menu managerAdmin">Manager</a>';
+					            			echo '<a href="../view/admin-home.php"class="btn btn-default btn-flat dropdown-menu managerAdmin">Manager</a>';
 					            		}
 					            		else {
 					            			echo '';

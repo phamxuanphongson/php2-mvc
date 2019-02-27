@@ -34,6 +34,9 @@
 			elseif (isset($_POST['save-editads-btn'])) {
 				include_once '../view/edit-ads.php';
 			}
+			elseif (isset($_POST['save-newuser-btn'])) {
+				include_once '../view/add-user.php';
+			}
 			elseif(isset($_GET['register'])){
 				include_once '../view/register.php';
 			}

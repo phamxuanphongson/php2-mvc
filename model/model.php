@@ -52,7 +52,7 @@ class model extends database{
 
 	public function addAccount($username,$password,$email)
 	{
-		$sql = "insert into users value (NULL,N'$username',N'$password',N'$email')";
+		$sql = "insert into users value (NULL,N'$username',N'$password',N'$email',N'')";
 		return parent::queryExecSQL($sql);
 	}
 

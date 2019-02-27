@@ -64,7 +64,7 @@
 				</div>
 		</div>
 
-		<!-- section --><a href="#" class="reply">Reply</a>
+		<!-- <a href="#" class="reply">Reply</a> -->
 		<div class="section">
 			<!-- container -->
 			<div class="container">
@@ -90,9 +90,9 @@
 
 						<!-- comments -->
 						<div class="section-row">
-							<div class="section-title">
+							<!-- <div class="section-title">
 								<h2>3 Comments</h2>
-							</div>
+							</div> -->
 
 							<div class="post-comments">
 								<!-- comment -->
@@ -133,7 +133,7 @@
 								<input type="hidden" name="post_id" value="<?php echo $id ?>">
 								<div class="row">
 
-									<?php if (!isset($_SESSION['au•••••••••••••th'])): ?>
+									<?php if (!isset($_SESSION['auth'])): ?>
 										<div class="col-md-4">
 											<div class="form-group">
 												<span>Name *</span>
@@ -177,7 +177,7 @@
 									<a class="post-img" href="blog-post.html"><img src="../inc/img/post-2.jpg" alt=""></a>
 									<div class="post-body">
 										<div class="post-meta">
-											<a class="post-category cat-3" href="#">Jquery</a>
+											<a class="post-category cat-<?php echo $post['cate_id'] ?>" href="#"><?php  echo $getTheCate['name'] ?></a>
 											<span class="post-date">March 27, 2018</span>
 										</div>
 										<h3 class="post-title"><a href="blog-post.html"><?php echo $post['title'] ?></a></h3>
