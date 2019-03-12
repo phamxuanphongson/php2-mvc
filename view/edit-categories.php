@@ -3,7 +3,7 @@
       if (isset($_GET['id'])){
       $id = $_GET['id'];
       $model = new model();
-      $cate = $model->getOneCate($id);
+      $cate = $model->getOne('categories',$id);
       }
 
       if (isset($_POST['save-editcate-btn'])) {
